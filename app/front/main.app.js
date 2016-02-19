@@ -6,8 +6,8 @@ const ipcRenderer = require('electron').ipcRenderer
 
 angular
     .module('main', ["firebase"])
-    .controller('loginController', function ($scope, $firebaseArray) {
-        var ref = new Firebase("https://addstones.firebaseio.com/example");
+    .controller('chatController', function ($scope, $firebaseArray) {
+        var ref = new Firebase("https://electrontest-hay.firebaseio.com/example");
 
         $scope.messages = $firebaseArray(ref);
 
@@ -24,5 +24,9 @@ angular
         $scope.testDialog = function () {
             ipcRenderer.send('openDialog', 'super message');
         }
+
+        $scope.pleaseOpenDevtools = function() {
+            ipcRenderer.send("please-open-devtools-main");
+        };
 
     });

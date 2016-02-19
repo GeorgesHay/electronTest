@@ -3,7 +3,6 @@
 const electron = require('electron');
 const BrowserWindow = electron.BrowserWindow;
 
-
 exports.createWindow = function() {
 
     var insertWindow = new BrowserWindow({
@@ -12,7 +11,7 @@ exports.createWindow = function() {
     });
 
 
-    insertWindow.webContents.openDevTools();
+    //insertWindow.webContents.openDevTools();
     insertWindow.loadURL('file://' + __dirname + '/template/login.html');
 
     insertWindow.isAlwaysOnTop(true);

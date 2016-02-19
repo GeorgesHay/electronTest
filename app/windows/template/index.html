@@ -18,7 +18,7 @@
 <script>require('electron-connect').client.create()</script>
 <!-- end:build -->
 
-<div class="container-fluid" ng-controller="loginController">
+<div class="container-fluid" ng-controller="chatController">
 
     <ul>
         <li ng-repeat="message in messages">{{ message.text }}
@@ -31,6 +31,8 @@
         <button class="btn btn-warning" ng-click="addMessage(message)">add</button>
     </form>
     <button class="btn btn-danger" ng-click="testDialog()">test Dialog box</button>
+
+    <button class="btn btn-default" ng-click="pleaseOpenDevtools()">Debug</button>
 </div>
 
 

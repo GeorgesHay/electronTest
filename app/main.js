@@ -13,9 +13,21 @@ app.on('ready', function(){
 
     var login = loginWindow.createWindow();
 
+    ipcMain.on('please-open-devtools-login', function() {
+        if (login)
+            login.webContents.openDevTools();
+    });
+
     ipcMain.on('closeLogin', function(event, arg) {
-        login.close();
         var main = mainWindow.createWindow(arg);
+
+        ipcMain.on('please-open-devtools-main', function() {
+            if (main)
+                main.webContents.openDevTools();
+        });
+
+        login.close();
+        login = null;
     });
 
 });

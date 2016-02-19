@@ -11,7 +11,7 @@ exports.createWindow = function(cookie) {
     });
 
 
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
     mainWindow.loadURL('file://' + __dirname + '/template/index.html');
 
     mainWindow.isAlwaysOnTop(true);

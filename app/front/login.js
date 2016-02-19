@@ -5,10 +5,10 @@ const ipcRenderer = require('electron').ipcRenderer;
 angular
     .module('login', ["firebase"])
     .controller('loginController', function ($scope, $firebaseObject) {
-        var ref = new Firebase("https://addstones.firebaseio.com/chat");
+        var ref = new Firebase("https://electrontest-hay.firebaseio.com/chat");
 
         $scope.user = {
-            email: 'sebastien@net-consult.info',
+            email: 'georgeshay@example.com',
             password: ''
         };
 
@@ -26,7 +26,7 @@ angular
                     } else {
 
                         var newUser = new $firebaseObject(ref);
-                        newUser[$scope.user.name] = {mail: authData.password.email, id: authData.auth.uid};
+                        newUser[$scope.user.email.substring(0, $scope.user.email.indexOf("@"))] = {mail: authData.password.email, id: authData.auth.uid};
                         newUser.$save().then(function () {
                             ipcRenderer.send('closeLogin', authData);
                         })
@@ -35,6 +35,10 @@ angular
                 });
             }
 
+        };
+
+        $scope.pleaseOpenDevtools = function() {
+            ipcRenderer.send("please-open-devtools-login");
         };
 
     });
